@@ -1,0 +1,76 @@
+# 🧠 AI Safety Incident Analysis Backend
+
+This backend service leverages **FastAPI** and **OpenAI's GPT models** to analyze workplace safety incidents, extract insights, and recommend corrective actions.
+
+## 📚 Table of Contents
+
+1. [Overview](#overview)
+2. [Features](#features)
+3. [Architecture](#architecture)
+4. [API Endpoints](#api-endpoints)
+5. [Database Schema](#database-schema)
+6. [Setup and Deployment](#setup-and-deployment)
+7. [Environment Variables](#environment-variables)
+
+## 🧩 Overview
+
+This API enables automatic analysis of safety incident reports. It uses natural language processing to identify:
+
+- Root causes
+- Underlying issues
+- Corrective actions
+
+All analyses are stored in a local SQLite database for audit and future reference.
+
+## 🚀 Features
+
+- 🔍 AI-driven root cause analysis (via GPT-4)
+- 🧾 Store and retrieve past incidents
+- ⚡ FastAPI backend with SQLite persistence
+- 🔒 CORS enabled for frontend compatibility
+
+## 🏗 Architecture
+
+- **FastAPI**: REST framework
+- **OpenAI GPT-4**: Incident analysis
+- **SQLAlchemy**: ORM
+- **SQLite**: Local persistent storage
+- **Pydantic**: Data validation
+
+## 📬 API Endpoints
+
+### `POST /api/analyze`
+
+Submit a safety incident for analysis.
+
+#### Request body:
+
+```json
+{
+  "date": "2025-05-09",
+  "location": "Mine A",
+  "description": "Worker slipped on wet floor.",
+  "peopleInvolved": "John Doe",
+  "immediateCauses": "Wet floor",
+  "contributingFactors": "Lack of signage"
+}
+
+{
+  "rootCause": "...",
+  "underlyingCauses": "...",
+  "correctiveActions": "...",
+  "analyzedAt": "2025-05-09T14:00:00Z"
+}
+
+
+{
+  "rootCause": "...",
+  "underlyingCauses": "...",
+  "correctiveActions": "...",
+  "analyzedAt": "2025-05-09T14:00:00Z"
+}
+
+pip install -r requirements.txt
+
+
+uvicorn main:app --reload
