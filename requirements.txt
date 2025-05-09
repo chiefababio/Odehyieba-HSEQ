@@ -1,6 +1,4 @@
 fastapi
 uvicorn
-sqlalchemy
-openai
-pydantic
-python-multipart
+transformers
+torch
